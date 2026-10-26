@@ -1,7 +1,11 @@
 package tn.esprit.wesleti_walaeddine_4.Service;
 
+import tn.esprit.wesleti_walaeddine_4.Domain.CategorieVehicule;
+import tn.esprit.wesleti_walaeddine_4.Domain.StatutVehicule;
 import tn.esprit.wesleti_walaeddine_4.Domain.Vehicule;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface IVehiculeService {
@@ -10,4 +14,14 @@ public interface IVehiculeService {
     Vehicule update(Vehicule vehicule);
     void deleteById(long id);
     List<Vehicule> findAll();
+
+    // métier
+    List<Vehicule> findByStatut(StatutVehicule statut);
+    List<Vehicule> findByCategorie(CategorieVehicule categorie);
+    List<Vehicule> findByAgence(long idAgence);
+    List<Vehicule> findByTarif(BigDecimal min, BigDecimal max);
+    List<Vehicule> findDisponibles(LocalDate dateDebut, LocalDate dateFin);
+    Vehicule affecterAgence(long idVehicule, long idAgence);
+    Vehicule ajouterEquipement(long idVehicule, long idEquipement);
+    Vehicule retirerEquipement(long idVehicule, long idEquipement);
 }
